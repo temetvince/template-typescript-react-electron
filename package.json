@@ -37,8 +37,8 @@
     "dev": "npm run typescript && concurrently -k \"cross-env BROWSER=none npm start\" \"npm:electron\"",
     "electron": "npm run typescript && wait-on tcp:3000 && electron .",
     "typescript": "npm run lint && npm run format && tsc",
-    "lint": "eslint src/**/*.{cjs,js,jsx,ts,tsx} --quiet --fix",
-    "format": "prettier --write src/**/*.{cjs,js,jsx,ts,tsx,json} src/**/*.{cjs,js,jsx,ts,tsx,json,html,css}",
+    "lint": "eslint \"src/**/*.{cjs,js,jsx,ts,tsx}\" --quiet --fix",
+    "format": "prettier --write \"src/**/*.{cjs,js,jsx,ts,tsx,json}\" \"src/**/*.{cjs,js,jsx,ts,tsx,json,html,css}\"",
     "update-dependencies": "ncu -u"
   },
   "eslintConfig": {
