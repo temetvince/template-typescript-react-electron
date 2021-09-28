@@ -1,6 +1,6 @@
 export const tryCatch = async (
-   callback: (...args: any[]) => any
-): Promise<any> => {
+   callback: (...args: never[]) => never
+): Promise<unknown> => {
    try {
       return await callback();
    } catch (err) {

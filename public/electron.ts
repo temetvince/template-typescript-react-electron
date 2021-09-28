@@ -1,6 +1,6 @@
 const path = require('path');
 
-const { app, BrowserWindow, shell } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
 
 function createWindow() {
@@ -21,16 +21,15 @@ function createWindow() {
             : `file://${path.join(__dirname, '../build/index.html')}`
     );
 
-    // Force links to open in the browser, not electron.
-    win.webContents.on('new-window', (e, url) => {
-       e.preventDefault();
-
-       shell.openExternal(url);
-    })
+    // open links externall in browser
+    win.webContents.on('new-window', function (e, url) {
+        e.preventDefault();
+        require('electron').shell.openExternal(url);
+    });
 
     // Open the DevTools.
     if (isDev) {
-        win.webContents.openDevTools({ mode: 'detach' });
+        win.webContents.openDevTools({mode: 'detach'});
     }
 }
 

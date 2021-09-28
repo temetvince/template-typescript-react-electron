@@ -1,7 +1,8 @@
 import * as React from "react";
 import { Redirect } from "react-router-dom";
-import RefURL from "./RefURL";
-import { tryCatch } from "../../Utils";
+import { Container, Flex } from "@chakra-ui/react";
+import Details from "./Details";
+import Cart from "./Cart";
 
 export interface UrlPageProps {
    text: string;
@@ -10,8 +11,9 @@ export interface UrlPageProps {
 interface State {
    redirect: boolean;
    text: string;
-   hasGetBeenCalled: boolean;
 }
+
+const spacing = 10;
 
 class UrlPage extends React.Component<UrlPageProps, State> {
    constructor(props: UrlPageProps) {
@@ -20,18 +22,11 @@ class UrlPage extends React.Component<UrlPageProps, State> {
       this.state = {
          redirect: false,
          text: this.props.text,
-         hasGetBeenCalled: false,
       };
    }
 
    buttonClicked = (): void => {
       this.setState({ redirect: true });
-   };
-
-   downloadButtonClicked = async (url: URL): Promise<void> => {
-      return await tryCatch(() => {
-         window.open(url);
-      });
    };
 
    render(): JSX.Element {
@@ -47,32 +42,23 @@ class UrlPage extends React.Component<UrlPageProps, State> {
       }
 
       return (
-         <div style={styles.app}>
-            <div>
-               <RefURL
-                  text={"My Personal Website"}
-                  onClick={() =>
-                     this.downloadButtonClicked(new URL("http://elcasey.com"))
-                  }
-               />
-            </div>
-            <div>
-               <button onClick={() => this.buttonClicked()}>
-                  {this.state.text}
-               </button>
-            </div>
+         <div>
+            <Container maxW={"container.xl"} p={0}>
+               <Flex
+                  h={{ base: "auto", md: "100vh" }}
+                  py={[0, spacing, spacing * 2]}
+                  direction={{ base: "column-reverse", md: "row" }}
+               >
+                  <Cart
+                     spacing={spacing}
+                     redirectCallback={this.buttonClicked}
+                  />
+                  <Details spacing={spacing} />
+               </Flex>
+            </Container>
          </div>
       );
    }
 }
-
-const styles = {
-   app: {
-      height: "100vh",
-      width: "100%",
-      flexFlow: "column",
-      gap: "1em",
-   },
-};
 
 export default UrlPage;
