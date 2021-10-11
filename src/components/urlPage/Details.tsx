@@ -37,25 +37,25 @@ const Details = (props: UrlPageProps): JSX.Element => {
             <GridItem colSpan={colSpan}>
                <FormControl>
                   <FormLabel>First Name</FormLabel>
-                  <Input placeholder={"John"}/>
+                  <Input placeholder={"John"} />
                </FormControl>
             </GridItem>
             <GridItem colSpan={colSpan}>
                <FormControl>
                   <FormLabel>Last Name</FormLabel>
-                  <Input placeholder={"Doe"}/>
+                  <Input placeholder={"Doe"} />
                </FormControl>
             </GridItem>
             <GridItem colSpan={2}>
                <FormControl>
                   <FormLabel>Address</FormLabel>
-                  <Input placeholder={"Blvd. Broken Dreams 21"}/>
+                  <Input placeholder={"Blvd. Broken Dreams 21"} />
                </FormControl>
             </GridItem>
             <GridItem colSpan={colSpan}>
                <FormControl>
                   <FormLabel>City</FormLabel>
-                  <Input placeholder={"San Francisco"}/>
+                  <Input placeholder={"San Francisco"} />
                </FormControl>
             </GridItem>
             <GridItem colSpan={colSpan}>
