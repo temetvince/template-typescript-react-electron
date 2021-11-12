@@ -24,7 +24,7 @@
     "eslint": "latest",
     "eslint-config-prettier": "latest",
     "eslint-plugin-react": "latest",
-    "framer-motion": "latest",
+    "framer-motion": "^4.1.17",
     "i": "latest",
     "npm": "latest",
     "npm-check-updates": "latest",
